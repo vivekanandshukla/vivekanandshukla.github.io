@@ -21,12 +21,23 @@ section{padding:100px 0;border-top:1px solid var(--l)}.label{font:9px 'DM Mono';
 @media(max-width:900px){nav,.cv{display:none}.menu{display:block}.hero,.two,.exp{grid-template-columns:1fr}.hero{padding:65px 0}.skills,.roadmap,.learning,.creds{grid-template-columns:1fr 1fr}.projects{grid-template-columns:1fr}.head{display:block}.head p{margin-top:15px}}
 @media(max-width:560px){.wrap{padding:0 18px}.hero h1{letter-spacing:-4px}.buttons{flex-direction:column}.btn{text-align:center}.stats,.skills,.roadmap,.learning,.creds{grid-template-columns:1fr}section{padding:75px 0}}
 </style>
+
+<style>
+@media(max-width:900px){
+  .cv{display:none}
+  .mobile-resume{display:block}
+}
+.mobile-resume{display:none}
+@media(max-width:900px){
+  header .nav:after{content:"RESUME ↗";font:9px "DM Mono";color:var(--a);border:1px solid var(--l);padding:9px 11px;margin-left:auto;margin-right:12px}
+}
+</style>
 </head>
 <body>
-<header><div class="wrap nav"><a class="logo" href="#home">VS<i>.</i></a><nav><a class="active" href="#home">HOME</a><a href="#about">ABOUT</a><a href="#skills">SKILLS</a><a href="#projects">PROJECTS</a><a href="#learning">LEARNING</a><a href="#experience">EXPERIENCE</a><a href="#contact">CONTACT</a></nav><a class="cv" href="resume/Vivekanand_Shukla_Resume.pdf">RESUME ↗</a><button class="menu">☰</button></div></header>
+<header><div class="wrap nav"><a class="logo" href="#home">VS<i>.</i></a><nav><a class="active" href="#home">HOME</a><a href="#about">ABOUT</a><a href="#skills">SKILLS</a><a href="#projects">PROJECTS</a><a href="#learning">LEARNING</a><a href="#experience">EXPERIENCE</a><a href="#contact">CONTACT</a></nav><a class="cv" href="resume/Vivekanand_Shukla_Resume.pdf" target="_blank" rel="noopener">RESUME ↗</a><button class="menu">☰</button></div></header>
 <main class="wrap">
 <section id="home" class="hero">
-<div><div class="ey">DATA ANALYST · DATA SCIENCE · BUSINESS INTELLIGENCE</div><h1>Learning.<br>Building.<br><span>Analyzing.</span></h1><p class="lead">A project-first portfolio showing what I know, what I build, what I'm learning next, and how my skills evolve across Data Analytics, Machine Learning, Deep Learning and Generative AI.</p><div class="buttons"><a class="btn primary" href="#projects">EXPLORE PROJECTS</a><a class="btn outline" href="#learning">LEARNING PATH</a></div><div class="social"><a href="https://github.com/">GITHUB ↗</a><a href="https://linkedin.com/in/vivekanand-shukla-90756a5a">LINKEDIN ↗</a><a href="mailto:vivekshukla0920@gmail.com">EMAIL ↗</a></div></div>
+<div><div class="ey">DATA ANALYST · DATA SCIENCE · BUSINESS INTELLIGENCE</div><h1>Learning.<br>Building.<br><span>Analyzing.</span></h1><p class="lead">A project-first portfolio showing what I know, what I build, what I'm learning next, and how my skills evolve across Data Analytics, Machine Learning, Deep Learning and Generative AI.</p><div class="buttons"><a class="btn primary" href="#projects">EXPLORE PROJECTS</a><a class="btn outline" href="resume/Vivekanand_Shukla_Resume.pdf" target="_blank" rel="noopener">VIEW RESUME ↗</a></div><div class="social"><a href="https://github.com/">GITHUB ↗</a><a href="https://linkedin.com/in/vivekanand-shukla-90756a5a">LINKEDIN ↗</a><a href="mailto:vivekshukla0920@gmail.com">EMAIL ↗</a></div></div>
 <div class="board"><div class="bh"><span>SKILL MAP / 2026</span><span>ACTIVE LEARNING</span></div><div class="stats"><div class="stat"><b>DATA</b><small>ANALYTICS & BI</small></div><div class="stat"><b>ML</b><small>MACHINE LEARNING</small></div><div class="stat"><b>DL ↗</b><small>DEEP LEARNING</small></div><div class="stat"><b>GenAI</b><small>GENERATIVE AI</small></div></div><div class="stack"><div style="font:8px 'DM Mono';color:var(--m)">TECHNOLOGY STACK</div><div class="st"><span>Python</span><div class="bar"><i style="width:90%"></i></div></div><div class="st"><span>SQL</span><div class="bar"><i style="width:85%"></i></div></div><div class="st"><span>Power BI</span><div class="bar"><i style="width:92%"></i></div></div><div class="st"><span>Machine Learning</span><div class="bar"><i style="width:68%"></i></div></div><div class="st"><span>Deep Learning</span><div class="bar"><i style="width:55%"></i></div></div><div class="st"><span>Generative AI</span><div class="bar"><i style="width:50%"></i></div></div></div></div>
 </section>
 
@@ -76,7 +87,19 @@ section{padding:100px 0;border-top:1px solid var(--l)}.label{font:9px 'DM Mono';
 
 <section><div class="label">07 / EDUCATION</div><div class="creds"><div class="cred"><b>DATA SCIENCE</b><h3>Post Graduate Program in Data Science</h3><p>Careerera · 2021–22</p></div><div class="cred"><b>POST GRADUATE</b><h3>PG Diploma in Disaster & National Security Management</h3><p>2021–22</p></div><div class="cred"><b>ACADEMICS</b><h3>M.Com — DDU University, Gorakhpur</h3><p>2018–20</p></div></div></section>
 
-<section id="contact" class="contact"><div class="label">08 / CONNECT</div><h2>See what I <em>build.</em></h2><p class="muted">Follow the projects, notebooks and experiments as the portfolio grows.</p><a href="https://github.com/">GITHUB ↗</a> <a href="https://linkedin.com/in/vivekanand-shukla-90756a5a">LINKEDIN ↗</a> <a href="mailto:vivekshukla0920@gmail.com">EMAIL ↗</a></section>
+<section class="contact resume-card">
+<div class="label">08 / RESUME</div>
+<div class="two">
+  <div>
+    <h2>Want the <em>full profile?</em></h2>
+    <p class="muted">Download or open my latest resume for a concise view of my professional experience, technical skills and education.</p>
+  </div>
+  <div style="display:flex;align-items:center;justify-content:flex-end">
+    <a class="btn primary" href="resume/Vivekanand_Shukla_Resume.pdf" target="_blank" rel="noopener">OPEN RESUME ↗</a>
+  </div>
+</div>
+</section>
+<section id="contact" class="contact"><div class="label">09 / CONNECT</div><h2>See what I <em>build.</em></h2><p class="muted">Follow the projects, notebooks and experiments as the portfolio grows.</p><a href="https://github.com/">GITHUB ↗</a> <a href="https://linkedin.com/in/vivekanand-shukla-90756a5a">LINKEDIN ↗</a> <a href="mailto:vivekshukla0920@gmail.com">EMAIL ↗</a></section>
 </main>
 <footer class="wrap"><span>© 2026 Vivekanand Shukla</span><span>Learning · Building · Analyzing</span></footer>
 <script>

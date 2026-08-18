@@ -75,7 +75,7 @@ Data Quality Audit
      ↓
 Data Cleaning
      ↓
-Exploratory Data Analysis
+- Exploratory Data Analysis
      ↓
 Business KPI Analysis
      ↓
@@ -90,16 +90,17 @@ Business Insights
 Recommendations
 
 📈 Key KPIs
-KPI	Value
-Total Sales	$2,297,200.86
-Total Profit	$286,397.02
-Profit Margin	12.47%
-Total Quantity	37,873
-Total Orders	5,009
-Total Customers	793
-Total Products	1,862
-Average Order Value	$458.61
-Average Profit / Order	$57.18
+| KPI | Value |
+|---|---:|
+| Total Sales | $2,297,200.86 |
+| Total Profit | $286,397.02 |
+| Profit Margin | 12.47% |
+| Total Quantity | 37,873 |
+| Total Orders | 5,009 |
+| Total Customers | 793 |
+| Total Products | 1,862 |
+| Average Order Value | $458.61 |
+| Average Profit / Order | $57.18 |
 💡 Key Findings
 Category Performance
 
@@ -157,12 +158,12 @@ The Pearson correlation between Discount and Profit is approximately -0.220.
 Correlation indicates association; it does not prove that discount alone causes the observed profit changes.
 
 🎯 Business Recommendations
-Review high-discount transactions and discount approval policies.
-Investigate Tables and Bookcases at product and regional level.
-Monitor profit margin alongside sales growth.
-Analyze Central-region Furniture performance separately.
-Review loss-making products before making assortment or pricing decisions.
-Use category-specific discount strategies rather than applying one universal discount rule.
+- Review high-discount transactions and discount approval policies.
+- Investigate Tables and Bookcases at product and regional level.
+- Monitor profit margin alongside sales growth.
+- Analyze Central-region Furniture performance separately.
+- Review loss-making products before making assortment or pricing decisions.
+- Use category-specific discount strategies rather than applying one universal discount rule.
 📁 Project Structure
 retail-sales-profitability/
 │
@@ -187,24 +188,24 @@ retail-sales-profitability/
 
 Through this project, I worked through an end-to-end analytics workflow involving:
 
-Data quality assessment
-Data cleaning
-Exploratory Data Analysis
-KPI development
-Time-series analysis
-Product and category profitability
-Discount analysis
-Customer and regional analysis
-SQL-based business analysis
-Business insight generation
-Data-driven recommendations
+- Data quality assessment
+- Data cleaning
+- Exploratory Data Analysis
+- KPI development
+- Time-series analysis
+- Product and category profitability
+- Discount analysis
+- Customer and regional analysis
+- SQL-based business analysis
+- Business insight generation
+- Data-driven recommendations
 🚀 Future Improvements
-Build an interactive Power BI executive dashboard
-Add advanced SQL analysis
-Add statistical analysis of discount and profitability
-Perform deeper customer segmentation
-Develop predictive profitability models
-Add automated reporting
+- Build an interactive Power BI executive dashboard
+- Add advanced SQL analysis
+- Add statistical analysis of discount and profitability
+- Perform deeper customer segmentation
+- Develop predictive profitability models
+- Add automated reporting
 ⚠️ Project Disclaimer
 
 This is an independent portfolio project created for learning and demonstrating practical data analytics skills.

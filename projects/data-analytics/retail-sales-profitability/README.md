@@ -1,417 +1,223 @@
-Retail Sales & Profitability Analytics
+# Retail Sales & Profitability Analytics
 
-End-to-End Data Analytics Case Study
+**End-to-End Data Analytics Case Study**
 
-Python · Pandas · SQL · Excel · Power BI · Exploratory Data Analysis
+Python · SQL · Power BI · Excel · Pandas · NumPy
 
-A practical analysis of 9,994 retail transactions to understand sales growth, profitability, discount behavior, product performance, and regional business performance.
+---
 
-Executive Summary
+## Overview
 
-This project examines retail transaction data from 2014–2017 to answer a core business question:
+This project analyzes **9,994 retail transactions** from the Sample Superstore dataset to understand sales performance, profitability, discount behaviour, product economics, and regional performance.
 
-Where is the business generating revenue, and where is that revenue failing to translate into profit?
+The analysis is structured around one business question:
 
-The analysis moves from overall KPIs to time trends, category and sub-category performance, product profitability, discount behavior, regional performance, and customer segments.
+> **Where is the business generating revenue, and where is that revenue failing to translate into profit?**
 
-Business Snapshot
+The project moves from data validation and exploratory analysis to business diagnosis and actionable recommendations.
 
-Metric
+---
 
-Result
+## Executive Snapshot
 
-Sales
+| Sales | Profit | Profit Margin | Orders | Customers |
+|---:|---:|---:|---:|---:|
+| **$2.30M** | **$286.40K** | **12.47%** | **5,009** | **793** |
 
-$2.30M
+| Additional KPI | Value |
+|---|---:|
+| Products | 1,862 |
+| Quantity Sold | 37,873 |
+| Average Order Value | $458.61 |
 
-Profit
+---
 
-$286.40K
+## Business Questions
 
-Profit Margin
+This analysis investigates:
 
-12.47%
+1. Is sales growth translating into profit growth?
+2. Which categories and sub-categories create the most value?
+3. Which products generate losses?
+4. How does discounting relate to profitability?
+5. Which regions and customer segments perform best?
+6. Where are profitability problems concentrated?
 
-Orders
+---
 
-5,009
+## Key Findings
 
-Customers
+### 1. Furniture generates revenue, but weak profit
 
-793
+| Category | Sales | Profit | Margin |
+|---|---:|---:|---:|
+| Technology | $836.15K | **$145.45K** | **17.40%** |
+| Office Supplies | $719.05K | **$122.49K** | **17.04%** |
+| Furniture | $742.00K | **$18.45K** | **2.49%** |
 
-Products
+Furniture generated approximately **$742K in sales**, but only **$18.45K in profit**.
 
-1,862
+A deeper sub-category analysis shows where the problem is concentrated.
 
-Quantity Sold
+| Furniture Sub-category | Profit | Margin |
+|---|---:|---:|
+| **Tables** | **-$17.73K** | **-8.56%** |
+| **Bookcases** | **-$3.47K** | **-3.02%** |
+| Furnishings | $13.06K | 14.24% |
+| Chairs | $26.59K | 8.10% |
 
-37,873
+**Tables is the largest sub-category profitability concern.**
 
-Average Order Value
+---
 
-$458.61
+### 2. Higher discounts are associated with weaker profitability
 
-Business Problem
+| Discount Band | Profit Margin | Loss-making Record Rate |
+|---|---:|---:|
+| **0%** | **29.51%** | **0%** |
+| 1–10% | 16.61% | 4.26% |
+| 11–20% | 11.58% | 13.99% |
+| 21–30% | **-10.05%** | 91.63% |
+| 31–40% | **-19.44%** | 88.84% |
+| 41–60% | **-40.74%** | 100% |
+| >60% | **-122.63%** | 100% |
 
-Strong sales do not necessarily indicate strong business performance.
+The Pearson correlation between **Discount and Profit is approximately -0.220**.
 
-The analysis therefore focuses on the relationship between:
+> This is a descriptive association, not proof of causation. Product mix, category, region, and customer composition may also influence profitability.
 
-Revenue → Profit → Margin → Discount → Product → Region → Customer
+---
 
-The objective is to identify areas where management may need to review pricing, discounting, product performance, and regional strategy.
+### 3. Regional profitability is uneven
 
-Key Business Questions
+| Region | Sales | Profit | Margin |
+|---|---:|---:|---:|
+| **West** | $725.46K | **$108.42K** | **14.94%** |
+| East | $678.78K | $91.52K | 13.48% |
+| South | $391.72K | $46.75K | 11.93% |
+| Central | $501.24K | $39.71K | **7.92%** |
 
-Is sales growth translating into profit growth?
+The weakest Region × Category combination identified in the analysis is:
 
-Which categories and sub-categories create the most value?
+**Central × Furniture**
 
-Which products are generating losses?
+- Sales: approximately **$163.80K**
+- Profit: approximately **-$2.87K**
+- Margin: approximately **-1.75%**
 
-How strongly is discounting associated with profitability?
+This shows why regional performance needs to be analyzed together with category performance.
 
-Which regions and customer segments perform best?
+---
 
-Where are the major profitability risks concentrated?
+### 4. Sales growth should be evaluated with profitability
 
-Analytical Approach
+Sales increased from approximately **$484K in 2014** to approximately **$733K in 2017**.
 
-Raw Transaction Data
-        │
-        ▼
+However, sales and profit did not move proportionally in every year.
+
+In **2015**:
+
+- Sales decreased by approximately **2.83%**
+- Profit increased by approximately **24.37%**
+
+This demonstrates why revenue growth alone is not sufficient to evaluate business performance.
+
+---
+
+### 5. Profit is concentrated
+
+| Product Group | Share of Total Profit |
+|---|---:|
+| Top 10 products | **23.21%** |
+| Top 20 products | **32.23%** |
+
+A meaningful share of total profit comes from a relatively small group of products, making product-level profitability and concentration important areas for management attention.
+
+---
+
+## Analytical Approach
+
+```text
+Raw Data
+   ↓
 Data Quality Audit
-        │
-        ▼
+   ↓
 Data Cleaning & Preparation
-        │
-        ▼
+   ↓
 Exploratory Data Analysis
-        │
-        ├── Time Trends
-        ├── Category / Sub-category
-        ├── Product Profitability
-        ├── Discount Analysis
-        ├── Regional Analysis
-        └── Customer Analysis
-        │
-        ▼
+   ↓
+KPI & Time Analysis
+   ↓
+Category / Sub-category Analysis
+   ↓
+Product Profitability
+   ↓
+Discount Analysis
+   ↓
+Regional & Customer Analysis
+   ↓
 Business Diagnosis
-        │
-        ▼
+   ↓
 Recommendations
+```
 
-Data Quality
+---
+
+## Data Quality
 
 The dataset was audited before analysis.
 
-Quality Check
+| Check | Result |
+|---|---:|
+| Records | 9,994 |
+| Columns | 21 |
+| Duplicate Rows | **0** |
+| Missing Values | **0** |
+| Invalid Dates | **0** |
+| Ship Before Order | **0** |
+| Negative / Zero Sales | **0** |
+| Negative / Zero Quantity | **0** |
+| Negative-profit Records | **1,871** |
 
-Result
+Negative-profit records were intentionally retained because they are necessary for understanding the true profitability picture.
 
-Records
+---
 
-9,994
+## Business Recommendations
 
-Columns
+### Pricing & Discount Governance
+Review high-discount transactions and evaluate category-specific discount thresholds.
 
-21
+### Furniture Profitability
+Investigate Tables and Bookcases at product, discount, and regional level before making pricing or assortment decisions.
 
-Duplicate Rows
+### Regional Strategy
+Investigate Central × Furniture separately rather than treating the entire Central region as underperforming.
 
-0
+### Executive KPI Reporting
+Track **Sales, Profit, and Profit Margin together**.
 
-Missing Values
+### Product Concentration
+Monitor dependence on high-profit products and identify opportunities to broaden the profit base.
 
-0
+---
 
-Invalid Dates
+## Technical Stack
 
-0
+| Area | Tools |
+|---|---|
+| Programming | Python |
+| Data Analysis | Pandas, NumPy |
+| Querying | SQL |
+| Business Intelligence | Power BI, DAX |
+| Spreadsheet Analysis | Microsoft Excel |
+| Methods | Data Cleaning, EDA, KPI Analysis, Time-Series Analysis, Profitability Analysis |
 
-Ship Before Order
+---
 
-0
+## Repository Structure
 
-Negative / Zero Sales
-
-0
-
-Negative / Zero Quantity
-
-0
-
-Negative-Profit Records
-
-1,871
-
-Important: Loss-making records were retained. Removing them would artificially improve the profitability picture.
-
-Key Findings
-
-01 — Sales Growth Did Not Always Mean Better Profitability
-
-Sales increased from approximately $484K in 2014 to $733K in 2017.
-
-However, sales and profit did not move proportionally every year.
-
-In 2015:
-
-Sales decreased by approximately 2.83%
-
-Profit increased by approximately 24.37%
-
-This demonstrates why sales growth should be evaluated together with profitability and margin.
-
-02 — Furniture Is the Major Category-Level Profitability Concern
-
-Category
-
-Sales
-
-Profit
-
-Margin
-
-Technology
-
-$836.15K
-
-$145.45K
-
-17.40%
-
-Office Supplies
-
-$719.05K
-
-$122.49K
-
-17.04%
-
-Furniture
-
-$742.00K
-
-$18.45K
-
-2.49%
-
-Furniture generates substantial revenue but comparatively little profit.
-
-The analysis therefore goes one level deeper.
-
-Furniture Sub-category
-
-Sub-category
-
-Profit
-
-Margin
-
-Tables
-
--$17.73K
-
--8.56%
-
-Bookcases
-
--$3.47K
-
--3.02%
-
-Furnishings
-
-$13.06K
-
-14.24%
-
-Chairs
-
-$26.59K
-
-8.10%
-
-Tables is the largest profitability problem within Furniture.
-
-03 — Discounting Shows a Strong Negative Profitability Association
-
-Discount Band
-
-Profit Margin
-
-0%
-
-29.51%
-
-1–10%
-
-16.61%
-
-11–20%
-
-11.58%
-
-21–30%
-
--10.05%
-
-31–40%
-
--19.44%
-
-41–60%
-
--40.74%
-
->60%
-
--122.63%
-
-At 0% discount, there were no loss-making records.
-
-At discounts above 40%, all records in the corresponding bands were loss-making in this dataset.
-
-The Pearson correlation between Discount and Profit is approximately -0.220.
-
-This is a descriptive association, not proof that discounting alone causes the observed losses. Product mix, category, region, and customer composition may also influence profitability.
-
-04 — Regional Performance Is Uneven
-
-Region
-
-Sales
-
-Profit
-
-Margin
-
-West
-
-$725.46K
-
-$108.42K
-
-14.94%
-
-East
-
-$678.78K
-
-$91.52K
-
-13.48%
-
-South
-
-$391.72K
-
-$46.75K
-
-11.93%
-
-Central
-
-$501.24K
-
-$39.71K
-
-7.92%
-
-The Central × Furniture combination is particularly weak:
-
-Sales: ~$163.80K
-Profit: ~-$2.87K
-Margin: -1.75%
-
-This suggests that regional analysis should not stop at region-level totals; category-level decomposition is necessary.
-
-05 — Profit Is Concentrated Across Products
-
-The most profitable products contribute a meaningful share of total profit:
-
-Top 10 products: ~23.21% of total profit
-
-Top 20 products: ~32.23% of total profit
-
-This creates an additional management question:
-
-How dependent is overall profitability on a relatively small group of products?
-
-Business Recommendations
-
-1. Review high-discount transactions
-
-Introduce stronger discount governance, particularly for transactions with discounts above 20%.
-
-2. Investigate Tables and Bookcases
-
-Review pricing, discounting, product cost structure, and regional performance before making assortment decisions.
-
-3. Monitor margin alongside revenue
-
-Executive reporting should track Sales + Profit + Profit Margin, rather than revenue alone.
-
-4. Investigate Central × Furniture
-
-This combination should receive targeted analysis rather than treating the entire Central region as underperforming.
-
-5. Identify loss-making products
-
-Products with persistent negative profitability should be reviewed for pricing, discounting, demand, and strategic importance.
-
-6. Use category-specific discount policies
-
-A single discount policy may not be appropriate across all product categories.
-
-Technical Implementation
-
-Data Analysis
-
-Python
-
-Pandas
-
-NumPy
-
-Exploratory Data Analysis
-
-Data Cleaning
-
-Data Transformation
-
-Business Intelligence
-
-Power BI
-
-DAX
-
-KPI Design
-
-Dashboard Development
-
-Database / Querying
-
-SQL
-
-Aggregation
-
-Business Queries
-
-Customer / Product Analysis
-
-Spreadsheet Analysis
-
-Microsoft Excel
-
-Data Validation
-
-Analytical Calculations
-
-Repository Structure
-
+```text
 retail-sales-profitability/
 │
 ├── README.md
@@ -431,71 +237,57 @@ retail-sales-profitability/
     ├── 02_profit_by_category.png
     ├── 03_profit_by_subcategory.png
     └── 04_profit_by_region.png
+```
 
-Project Outputs
+---
 
-Data Preparation
+## Project Status
 
-Raw data audit
+| Component | Status |
+|---|:---:|
+| Data Quality Audit | Complete |
+| Data Cleaning | Complete |
+| KPI Analysis | Complete |
+| Time Trend Analysis | Complete |
+| Category Analysis | Complete |
+| Sub-category Analysis | Complete |
+| Product Profitability | Complete |
+| Discount Analysis | Complete |
+| Regional Analysis | Complete |
+| Customer Analysis | Complete |
+| Business Diagnosis | Complete |
+| SQL Analysis Layer | Complete |
+| Power BI Dashboard | Next |
+| Predictive Modelling | Future |
 
-Data quality assessment
+---
 
-Cleaned analytical dataset
+## What This Project Demonstrates
 
-Derived analytical fields
+This case study demonstrates an end-to-end approach to data analytics:
 
-Analysis
+**Business Question → Data Validation → Analysis → Evidence → Insight → Recommendation**
 
-KPI analysis
+The focus is not only on producing visualizations, but on identifying **where performance changes, where profitability is concentrated or lost, and what business questions should be investigated next**.
 
-Time-series analysis
+---
 
-Category analysis
+## Future Enhancements
 
-Sub-category analysis
+- Interactive Power BI executive dashboard
+- Advanced SQL analysis and window functions
+- Statistical testing of discount-profit relationships
+- Customer segmentation
+- Predictive profitability modelling
+- Automated reporting
 
-Product profitability
+---
 
-Discount analysis
+## Project Context
 
-Regional analysis
+**Type:** Independent Portfolio Project  
+**Domain:** Retail Analytics  
+**Dataset:** Sample Superstore  
+**Analysis Period:** 2014–2017
 
-Customer analysis
-
-Business Outcome
-
-Profitability diagnosis
-
-Risk areas
-
-Business recommendations
-
-Reproducible analytical workflow
-
-Future Enhancements
-
-Build an interactive Power BI executive dashboard
-
-Add advanced SQL analysis
-
-Add statistical testing for discount-profit relationships
-
-Build customer segmentation
-
-Develop predictive profitability models
-
-Automate recurring business reporting
-
-Add drill-through and interactive dashboard views
-
-What This Project Demonstrates
-
-This case study demonstrates the ability to move beyond basic visualization and follow an end-to-end analytical process:
-
-Business Question → Data → Analysis → Evidence → Insight → Recommendation
-
-Disclaimer
-
-This is an independent portfolio project created to demonstrate practical data analytics skills.
-
-The findings are calculated from the supplied Sample Superstore dataset. They do not represent professional employment work or employer/client data.
+This project is an independent portfolio case study created to demonstrate practical data analytics skills. The dataset is a public/sample dataset and does not represent employer or client work.

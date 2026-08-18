@@ -8,26 +8,23 @@ SELECT
     ROUND(SUM(Sales), 2) AS Total_Sales,
     ROUND(SUM(Profit), 2) AS Total_Profit,
     ROUND(SUM(Profit) / NULLIF(SUM(Sales), 0) * 100, 2) AS Profit_Margin,
-    COUNT(DISTINCT [Order ID]) AS Total_Orders,
-    COUNT(DISTINCT [Customer ID]) AS Total_Customers,
-    COUNT(DISTINCT [Product ID]) AS Total_Products,
+    COUNT(DISTINCT Order_ID) AS Total_Orders,
+    COUNT(DISTINCT Customer_ID) AS Total_Customers,
+    COUNT(DISTINCT Product_ID) AS Total_Products,
     SUM(Quantity) AS Total_Quantity
-FROM retail_sales;
+FROM dbo.retail_sales;
 
 
 -- Yearly Sales & Profit
 
 SELECT
-    YEAR([Order Date]) AS Year,
+    Order_Year AS Year,
     ROUND(SUM(Sales), 2) AS Sales,
     ROUND(SUM(Profit), 2) AS Profit,
-    ROUND(
-        SUM(Profit) / NULLIF(SUM(Sales), 0) * 100,
-        2
-    ) AS Profit_Margin,
-    COUNT(DISTINCT [Order ID]) AS Orders
-FROM retail_sales
-GROUP BY YEAR([Order Date])
+    ROUND(SUM(Profit) / NULLIF(SUM(Sales), 0) * 100, 2) AS Profit_Margin,
+    COUNT(DISTINCT Order_ID) AS Orders
+FROM dbo.retail_sales
+GROUP BY Order_Year
 ORDER BY Year;
 
 
@@ -35,11 +32,11 @@ ORDER BY Year;
 
 WITH yearly_sales AS (
     SELECT
-        YEAR([Order Date]) AS Year,
+        Order_Year AS Year,
         SUM(Sales) AS Sales,
         SUM(Profit) AS Profit
-    FROM retail_sales
-    GROUP BY YEAR([Order Date])
+    FROM dbo.retail_sales
+    GROUP BY Order_Year
 )
 SELECT
     Year,
@@ -59,19 +56,35 @@ FROM yearly_sales
 ORDER BY Year;
 
 
+-- Monthly Sales & Profit
+
+SELECT
+    Order_Year AS Year,
+    Order_Month AS Month,
+    Order_Month_Name AS Month_Name,
+    ROUND(SUM(Sales), 2) AS Sales,
+    ROUND(SUM(Profit), 2) AS Profit,
+    ROUND(SUM(Profit) / NULLIF(SUM(Sales), 0) * 100, 2) AS Profit_Margin
+FROM dbo.retail_sales
+GROUP BY
+    Order_Year,
+    Order_Month,
+    Order_Month_Name
+ORDER BY
+    Year,
+    Month;
+
+
 -- Category Performance
 
 SELECT
     Category,
     ROUND(SUM(Sales), 2) AS Sales,
     ROUND(SUM(Profit), 2) AS Profit,
-    ROUND(
-        SUM(Profit) / NULLIF(SUM(Sales), 0) * 100,
-        2
-    ) AS Profit_Margin,
+    ROUND(SUM(Profit) / NULLIF(SUM(Sales), 0) * 100, 2) AS Profit_Margin,
     SUM(Quantity) AS Quantity,
-    COUNT(DISTINCT [Order ID]) AS Orders
-FROM retail_sales
+    COUNT(DISTINCT Order_ID) AS Orders
+FROM dbo.retail_sales
 GROUP BY Category
 ORDER BY Profit DESC;
 
@@ -80,17 +93,14 @@ ORDER BY Profit DESC;
 
 SELECT
     Category,
-    [Sub-Category],
+    Sub_Category,
     ROUND(SUM(Sales), 2) AS Sales,
     ROUND(SUM(Profit), 2) AS Profit,
-    ROUND(
-        SUM(Profit) / NULLIF(SUM(Sales), 0) * 100,
-        2
-    ) AS Profit_Margin
-FROM retail_sales
+    ROUND(SUM(Profit) / NULLIF(SUM(Sales), 0) * 100, 2) AS Profit_Margin
+FROM dbo.retail_sales
 GROUP BY
     Category,
-    [Sub-Category]
+    Sub_Category
 ORDER BY Profit;
 
 
@@ -98,17 +108,14 @@ ORDER BY Profit;
 
 SELECT
     Category,
-    [Sub-Category],
+    Sub_Category,
     ROUND(SUM(Sales), 2) AS Sales,
     ROUND(SUM(Profit), 2) AS Profit,
-    ROUND(
-        SUM(Profit) / NULLIF(SUM(Sales), 0) * 100,
-        2
-    ) AS Profit_Margin
-FROM retail_sales
+    ROUND(SUM(Profit) / NULLIF(SUM(Sales), 0) * 100, 2) AS Profit_Margin
+FROM dbo.retail_sales
 GROUP BY
     Category,
-    [Sub-Category]
+    Sub_Category
 HAVING SUM(Profit) < 0
 ORDER BY Profit;
 
@@ -116,36 +123,30 @@ ORDER BY Profit;
 -- Top 10 Most Profitable Products
 
 SELECT TOP 10
-    [Product ID],
-    [Product Name],
+    Product_ID,
+    Product_Name,
     ROUND(SUM(Sales), 2) AS Sales,
     ROUND(SUM(Profit), 2) AS Profit,
-    ROUND(
-        SUM(Profit) / NULLIF(SUM(Sales), 0) * 100,
-        2
-    ) AS Profit_Margin
-FROM retail_sales
+    ROUND(SUM(Profit) / NULLIF(SUM(Sales), 0) * 100, 2) AS Profit_Margin
+FROM dbo.retail_sales
 GROUP BY
-    [Product ID],
-    [Product Name]
+    Product_ID,
+    Product_Name
 ORDER BY Profit DESC;
 
 
 -- Bottom 10 Products by Profit
 
 SELECT TOP 10
-    [Product ID],
-    [Product Name],
+    Product_ID,
+    Product_Name,
     ROUND(SUM(Sales), 2) AS Sales,
     ROUND(SUM(Profit), 2) AS Profit,
-    ROUND(
-        SUM(Profit) / NULLIF(SUM(Sales), 0) * 100,
-        2
-    ) AS Profit_Margin
-FROM retail_sales
+    ROUND(SUM(Profit) / NULLIF(SUM(Sales), 0) * 100, 2) AS Profit_Margin
+FROM dbo.retail_sales
 GROUP BY
-    [Product ID],
-    [Product Name]
+    Product_ID,
+    Product_Name
 ORDER BY Profit;
 
 
@@ -155,12 +156,9 @@ SELECT
     Region,
     ROUND(SUM(Sales), 2) AS Sales,
     ROUND(SUM(Profit), 2) AS Profit,
-    ROUND(
-        SUM(Profit) / NULLIF(SUM(Sales), 0) * 100,
-        2
-    ) AS Profit_Margin,
-    COUNT(DISTINCT [Order ID]) AS Orders
-FROM retail_sales
+    ROUND(SUM(Profit) / NULLIF(SUM(Sales), 0) * 100, 2) AS Profit_Margin,
+    COUNT(DISTINCT Order_ID) AS Orders
+FROM dbo.retail_sales
 GROUP BY Region
 ORDER BY Profit DESC;
 
@@ -172,11 +170,8 @@ SELECT
     Category,
     ROUND(SUM(Sales), 2) AS Sales,
     ROUND(SUM(Profit), 2) AS Profit,
-    ROUND(
-        SUM(Profit) / NULLIF(SUM(Sales), 0) * 100,
-        2
-    ) AS Profit_Margin
-FROM retail_sales
+    ROUND(SUM(Profit) / NULLIF(SUM(Sales), 0) * 100, 2) AS Profit_Margin
+FROM dbo.retail_sales
 GROUP BY
     Region,
     Category
@@ -189,13 +184,10 @@ SELECT
     Segment,
     ROUND(SUM(Sales), 2) AS Sales,
     ROUND(SUM(Profit), 2) AS Profit,
-    ROUND(
-        SUM(Profit) / NULLIF(SUM(Sales), 0) * 100,
-        2
-    ) AS Profit_Margin,
-    COUNT(DISTINCT [Order ID]) AS Orders,
-    COUNT(DISTINCT [Customer ID]) AS Customers
-FROM retail_sales
+    ROUND(SUM(Profit) / NULLIF(SUM(Sales), 0) * 100, 2) AS Profit_Margin,
+    COUNT(DISTINCT Order_ID) AS Orders,
+    COUNT(DISTINCT Customer_ID) AS Customers
+FROM dbo.retail_sales
 GROUP BY Segment
 ORDER BY Profit DESC;
 
@@ -203,19 +195,16 @@ ORDER BY Profit DESC;
 -- Top 10 Customers by Profit
 
 SELECT TOP 10
-    [Customer ID],
-    [Customer Name],
+    Customer_ID,
+    Customer_Name,
     ROUND(SUM(Sales), 2) AS Sales,
     ROUND(SUM(Profit), 2) AS Profit,
-    ROUND(
-        SUM(Profit) / NULLIF(SUM(Sales), 0) * 100,
-        2
-    ) AS Profit_Margin,
-    COUNT(DISTINCT [Order ID]) AS Orders
-FROM retail_sales
+    ROUND(SUM(Profit) / NULLIF(SUM(Sales), 0) * 100, 2) AS Profit_Margin,
+    COUNT(DISTINCT Order_ID) AS Orders
+FROM dbo.retail_sales
 GROUP BY
-    [Customer ID],
-    [Customer Name]
+    Customer_ID,
+    Customer_Name
 ORDER BY Profit DESC;
 
 
@@ -225,12 +214,9 @@ SELECT
     Discount,
     ROUND(SUM(Sales), 2) AS Sales,
     ROUND(SUM(Profit), 2) AS Profit,
-    ROUND(
-        SUM(Profit) / NULLIF(SUM(Sales), 0) * 100,
-        2
-    ) AS Profit_Margin,
+    ROUND(SUM(Profit) / NULLIF(SUM(Sales), 0) * 100, 2) AS Profit_Margin,
     COUNT(*) AS Records
-FROM retail_sales
+FROM dbo.retail_sales
 GROUP BY Discount
 ORDER BY Discount;
 
@@ -255,7 +241,7 @@ SELECT
         ) * 100.0 / COUNT(*),
         2
     ) AS Loss_Rate
-FROM retail_sales
+FROM dbo.retail_sales
 GROUP BY Discount
 ORDER BY Discount;
 
@@ -267,36 +253,13 @@ SELECT
     Category,
     ROUND(SUM(Sales), 2) AS Sales,
     ROUND(SUM(Profit), 2) AS Profit,
-    ROUND(
-        SUM(Profit) / NULLIF(SUM(Sales), 0) * 100,
-        2
-    ) AS Profit_Margin
-FROM retail_sales
+    ROUND(SUM(Profit) / NULLIF(SUM(Sales), 0) * 100, 2) AS Profit_Margin
+FROM dbo.retail_sales
 WHERE Region = 'Central'
   AND Category = 'Furniture'
 GROUP BY
     Region,
     Category;
-
-
--- Monthly Sales & Profit
-
-SELECT
-    YEAR([Order Date]) AS Year,
-    MONTH([Order Date]) AS Month,
-    ROUND(SUM(Sales), 2) AS Sales,
-    ROUND(SUM(Profit), 2) AS Profit,
-    ROUND(
-        SUM(Profit) / NULLIF(SUM(Sales), 0) * 100,
-        2
-    ) AS Profit_Margin
-FROM retail_sales
-GROUP BY
-    YEAR([Order Date]),
-    MONTH([Order Date])
-ORDER BY
-    Year,
-    Month;
 
 
 -- Negative Profit Transactions
@@ -305,7 +268,7 @@ SELECT
     COUNT(*) AS Loss_Making_Records,
     ROUND(SUM(Sales), 2) AS Sales,
     ROUND(SUM(Profit), 2) AS Profit
-FROM retail_sales
+FROM dbo.retail_sales
 WHERE Profit < 0;
 
 
@@ -313,14 +276,14 @@ WHERE Profit < 0;
 
 WITH product_profit AS (
     SELECT
-        [Product ID],
+        Product_ID,
         SUM(Profit) AS Profit
-    FROM retail_sales
-    GROUP BY [Product ID]
+    FROM dbo.retail_sales
+    GROUP BY Product_ID
 ),
 ranked_products AS (
     SELECT
-        [Product ID],
+        Product_ID,
         Profit,
         ROW_NUMBER() OVER (
             ORDER BY Profit DESC
@@ -329,7 +292,7 @@ ranked_products AS (
 )
 SELECT
     Profit_Rank,
-    [Product ID],
+    Product_ID,
     ROUND(Profit, 2) AS Profit
 FROM ranked_products
 WHERE Profit_Rank <= 20
@@ -343,11 +306,8 @@ SELECT
     COUNT(*) AS Records,
     ROUND(SUM(Sales), 2) AS Sales,
     ROUND(SUM(Profit), 2) AS Profit,
-    ROUND(
-        SUM(Profit) / NULLIF(SUM(Sales), 0) * 100,
-        2
-    ) AS Profit_Margin
-FROM retail_sales
+    ROUND(SUM(Profit) / NULLIF(SUM(Sales), 0) * 100, 2) AS Profit_Margin
+FROM dbo.retail_sales
 WHERE Discount > 0.20
 GROUP BY Discount
 ORDER BY Discount;

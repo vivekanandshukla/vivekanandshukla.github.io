@@ -1,53 +1,41 @@
+<div align="center">
+
 # Retail Sales & Profitability Analytics
 
 **End-to-End Data Analytics Case Study**
 
-Python · SQL · Power BI · Excel · Pandas · NumPy
+Python · SQL · Power BI · Excel
 
----
+**9,994 Transactions** &nbsp; · &nbsp; **$2.30M Sales** &nbsp; · &nbsp; **$286.40K Profit** &nbsp; · &nbsp; **12.47% Margin**
+
+</div>
 
 ## Overview
 
-This project analyzes **9,994 retail transactions** from the Sample Superstore dataset to understand sales performance, profitability, discount behaviour, product economics, and regional performance.
+This case study analyzes retail transactions from the Sample Superstore dataset to understand **sales performance, profitability, discount behaviour, product economics, and regional performance**.
 
-The analysis is structured around one business question:
+The central business question is:
 
 > **Where is the business generating revenue, and where is that revenue failing to translate into profit?**
 
-The project moves from data validation and exploratory analysis to business diagnosis and actionable recommendations.
-
----
+The analysis progresses from data validation and exploratory analysis to profitability diagnosis and business recommendations.
 
 ## Executive Snapshot
 
-| Sales | Profit | Profit Margin | Orders | Customers |
-|---:|---:|---:|---:|---:|
-| **$2.30M** | **$286.40K** | **12.47%** | **5,009** | **793** |
-
-| Additional KPI | Value |
+| Metric | Value |
 |---|---:|
-| Products | 1,862 |
-| Quantity Sold | 37,873 |
-| Average Order Value | $458.61 |
+| Sales | **$2,297,200.86** |
+| Profit | **$286,397.02** |
+| Profit Margin | **12.47%** |
+| Orders | **5,009** |
+| Customers | **793** |
+| Products | **1,862** |
+| Quantity Sold | **37,873** |
+| Average Order Value | **$458.61** |
 
----
+## What the Analysis Found
 
-## Business Questions
-
-This analysis investigates:
-
-1. Is sales growth translating into profit growth?
-2. Which categories and sub-categories create the most value?
-3. Which products generate losses?
-4. How does discounting relate to profitability?
-5. Which regions and customer segments perform best?
-6. Where are profitability problems concentrated?
-
----
-
-## Key Findings
-
-### 1. Furniture generates revenue, but weak profit
+### Furniture is the primary category-level profitability concern
 
 | Category | Sales | Profit | Margin |
 |---|---:|---:|---:|
@@ -55,11 +43,11 @@ This analysis investigates:
 | Office Supplies | $719.05K | **$122.49K** | **17.04%** |
 | Furniture | $742.00K | **$18.45K** | **2.49%** |
 
-Furniture generated approximately **$742K in sales**, but only **$18.45K in profit**.
+Furniture generates substantial revenue, but its profit margin is significantly below the other two major categories.
 
-A deeper sub-category analysis shows where the problem is concentrated.
+The problem becomes clearer at sub-category level:
 
-| Furniture Sub-category | Profit | Margin |
+| Sub-category | Profit | Margin |
 |---|---:|---:|
 | **Tables** | **-$17.73K** | **-8.56%** |
 | **Bookcases** | **-$3.47K** | **-3.02%** |
@@ -68,11 +56,9 @@ A deeper sub-category analysis shows where the problem is concentrated.
 
 **Tables is the largest sub-category profitability concern.**
 
----
+### Discounting is strongly associated with weaker profitability
 
-### 2. Higher discounts are associated with weaker profitability
-
-| Discount Band | Profit Margin | Loss-making Record Rate |
+| Discount Band | Profit Margin | Loss-making Records |
 |---|---:|---:|
 | **0%** | **29.51%** | **0%** |
 | 1–10% | 16.61% | 4.26% |
@@ -86,9 +72,7 @@ The Pearson correlation between **Discount and Profit is approximately -0.220**.
 
 > This is a descriptive association, not proof of causation. Product mix, category, region, and customer composition may also influence profitability.
 
----
-
-### 3. Regional profitability is uneven
+### Regional performance is uneven
 
 | Region | Sales | Profit | Margin |
 |---|---:|---:|---:|
@@ -97,60 +81,45 @@ The Pearson correlation between **Discount and Profit is approximately -0.220**.
 | South | $391.72K | $46.75K | 11.93% |
 | Central | $501.24K | $39.71K | **7.92%** |
 
-The weakest Region × Category combination identified in the analysis is:
+The weakest Region × Category combination is **Central × Furniture**:
 
-**Central × Furniture**
+**~$163.80K Sales → ~-$2.87K Profit → ~-1.75% Margin**
 
-- Sales: approximately **$163.80K**
-- Profit: approximately **-$2.87K**
-- Margin: approximately **-1.75%**
+### Revenue growth should be evaluated with profitability
 
-This shows why regional performance needs to be analyzed together with category performance.
-
----
-
-### 4. Sales growth should be evaluated with profitability
-
-Sales increased from approximately **$484K in 2014** to approximately **$733K in 2017**.
+Sales increased from approximately **$484K in 2014** to **$733K in 2017**.
 
 However, sales and profit did not move proportionally in every year.
 
-In **2015**:
-
-- Sales decreased by approximately **2.83%**
-- Profit increased by approximately **24.37%**
+In **2015**, sales decreased by approximately **2.83%**, while profit increased by approximately **24.37%**.
 
 This demonstrates why revenue growth alone is not sufficient to evaluate business performance.
 
----
+## Business Questions
 
-### 5. Profit is concentrated
+The analysis was designed around six practical questions:
 
-| Product Group | Share of Total Profit |
-|---|---:|
-| Top 10 products | **23.21%** |
-| Top 20 products | **32.23%** |
+1. Is sales growth translating into profit growth?
+2. Which categories and sub-categories create the most value?
+3. Which products generate losses?
+4. How does discounting relate to profitability?
+5. Which regions and customer segments perform best?
+6. Where are profitability problems concentrated?
 
-A meaningful share of total profit comes from a relatively small group of products, making product-level profitability and concentration important areas for management attention.
-
----
-
-## Analytical Approach
+## Analytical Workflow
 
 ```text
 Raw Data
    ↓
 Data Quality Audit
    ↓
-Data Cleaning & Preparation
+Cleaning & Preparation
    ↓
-Exploratory Data Analysis
+Exploratory Analysis
    ↓
 KPI & Time Analysis
    ↓
-Category / Sub-category Analysis
-   ↓
-Product Profitability
+Product & Category Analysis
    ↓
 Discount Analysis
    ↓
@@ -161,11 +130,7 @@ Business Diagnosis
 Recommendations
 ```
 
----
-
 ## Data Quality
-
-The dataset was audited before analysis.
 
 | Check | Result |
 |---|---:|
@@ -179,33 +144,24 @@ The dataset was audited before analysis.
 | Negative / Zero Quantity | **0** |
 | Negative-profit Records | **1,871** |
 
-Negative-profit records were intentionally retained because they are necessary for understanding the true profitability picture.
-
----
+Negative-profit records were intentionally retained because they are necessary for understanding the actual profitability picture.
 
 ## Business Recommendations
 
-### Pricing & Discount Governance
-
+**01 — Discount Governance**  
 Review high-discount transactions and evaluate category-specific discount thresholds.
 
-### Furniture Profitability
-
+**02 — Furniture Profitability**  
 Investigate Tables and Bookcases at product, discount, and regional level before making pricing or assortment decisions.
 
-### Regional Strategy
-
+**03 — Regional Strategy**  
 Investigate Central × Furniture separately rather than treating the entire Central region as underperforming.
 
-### Executive KPI Reporting
-
+**04 — Executive KPI Reporting**  
 Track **Sales, Profit, and Profit Margin together**.
 
-### Product Concentration
-
+**05 — Product Concentration**  
 Monitor dependence on high-profit products and identify opportunities to broaden the profit base.
-
----
 
 ## Technical Stack
 
@@ -218,33 +174,25 @@ Monitor dependence on high-profit products and identify opportunities to broaden
 | Spreadsheet Analysis | Microsoft Excel |
 | Methods | Data Cleaning, EDA, KPI Analysis, Time-Series Analysis, Profitability Analysis |
 
----
-
 ## Repository Structure
 
 ```text
 retail-sales-profitability/
 │
 ├── README.md
-│
 ├── data/
 │   └── cleaned_superstore.csv
-│
 ├── notebooks/
 │   ├── 01_audit_and_kpis.py
 │   └── 02_eda.py
-│
 ├── sql/
 │   └── business_questions.sql
-│
 └── images/
     ├── 01_monthly_sales_profit.png
     ├── 02_profit_by_category.png
     ├── 03_profit_by_subcategory.png
     └── 04_profit_by_region.png
 ```
-
----
 
 ## Project Status
 
@@ -254,8 +202,7 @@ retail-sales-profitability/
 | Data Cleaning | Complete |
 | KPI Analysis | Complete |
 | Time Trend Analysis | Complete |
-| Category Analysis | Complete |
-| Sub-category Analysis | Complete |
+| Category & Sub-category Analysis | Complete |
 | Product Profitability | Complete |
 | Discount Analysis | Complete |
 | Regional Analysis | Complete |
@@ -265,17 +212,13 @@ retail-sales-profitability/
 | Power BI Dashboard | Next |
 | Predictive Modelling | Future |
 
----
-
 ## What This Project Demonstrates
 
-This case study demonstrates an end-to-end approach to data analytics:
+This case study demonstrates the complete analytical chain:
 
 **Business Question → Data Validation → Analysis → Evidence → Insight → Recommendation**
 
-The focus is not only on producing visualizations, but on identifying **where performance changes, where profitability is concentrated or lost, and what business questions should be investigated next**.
-
----
+The emphasis is on understanding **what changed, where profitability is being created or lost, and which business areas deserve further investigation**.
 
 ## Future Enhancements
 
@@ -286,8 +229,6 @@ The focus is not only on producing visualizations, but on identifying **where pe
 - Predictive profitability modelling
 - Automated reporting
 
----
-
 ## Project Context
 
 **Type:** Independent Portfolio Project  
@@ -295,4 +236,4 @@ The focus is not only on producing visualizations, but on identifying **where pe
 **Dataset:** Sample Superstore  
 **Analysis Period:** 2014–2017
 
-This project is an independent portfolio case study created to demonstrate practical data analytics skills. The dataset is a public/sample dataset and does not represent employer or client work.
+This is an independent portfolio case study created to demonstrate practical data analytics skills. The dataset is a public/sample dataset and does not represent employer or client work.

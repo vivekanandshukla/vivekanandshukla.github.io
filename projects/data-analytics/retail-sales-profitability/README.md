@@ -186,18 +186,23 @@ Negative-profit records were intentionally retained because they are necessary f
 ## Business Recommendations
 
 ### Pricing & Discount Governance
+
 Review high-discount transactions and evaluate category-specific discount thresholds.
 
 ### Furniture Profitability
+
 Investigate Tables and Bookcases at product, discount, and regional level before making pricing or assortment decisions.
 
 ### Regional Strategy
+
 Investigate Central × Furniture separately rather than treating the entire Central region as underperforming.
 
 ### Executive KPI Reporting
+
 Track **Sales, Profit, and Profit Margin together**.
 
 ### Product Concentration
+
 Monitor dependence on high-profit products and identify opportunities to broaden the profit base.
 
 ---

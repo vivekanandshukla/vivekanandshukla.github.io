@@ -174,24 +174,65 @@ Monitor dependence on high-profit products and identify opportunities to broaden
 | Spreadsheet Analysis | Microsoft Excel |
 | Methods | Data Cleaning, EDA, KPI Analysis, Time-Series Analysis, Profitability Analysis |
 
+## Power BI Dashboard
+
+The project includes an interactive Power BI dashboard designed to monitor overall business performance and investigate the key drivers of profitability.
+
+### Executive Overview
+
+The Executive Overview provides a high-level view of business performance across:
+
+- Sales and profit
+- Profit margin
+- Order and customer volume
+- Yearly sales and profit trends
+- Category profitability
+- Regional profitability
+- Customer segment performance
+
+![Executive Overview](powerbi/executive-overview.png)
+
+### Profitability Deep Dive
+
+The Profitability Deep Dive focuses on identifying profit drivers, loss-making areas, discount-related profitability patterns, regional-category performance, and product-level profitability.
+
+![Profitability Deep Dive](powerbi/profitability-deep-dive.png)
+
+### Dashboard Capabilities
+
+- Interactive filtering by year, region, category, and customer segment
+- Executive KPI monitoring
+- Sales and profit trend analysis
+- Category and regional profitability analysis
+- Sub-category profitability analysis
+- Discount versus profit-margin analysis
+- Region × category profitability diagnostics
+- Top and bottom product profitability analysis
+
+## Repository Structure
+
+```text
 ## Repository Structure
 
 ```text
 retail-sales-profitability/
 │
 ├── README.md
+│
 ├── data/
 │   └── cleaned_superstore.csv
+│
 ├── notebooks/
 │   ├── 01_audit_and_kpis.py
 │   └── 02_eda.py
+│
 ├── sql/
 │   └── business_questions.sql
-└── images/
-    ├── 01_monthly_sales_profit.png
-    ├── 02_profit_by_category.png
-    ├── 03_profit_by_subcategory.png
-    └── 04_profit_by_region.png
+│
+└── powerbi/
+    ├── Retail_Sales_Profitability_Analytics.pbix
+    ├── executive-overview.png
+    └── profitability-deep-dive.png
 ```
 
 ## Project Status
@@ -209,7 +250,7 @@ retail-sales-profitability/
 | Customer Analysis | Complete |
 | Business Diagnosis | Complete |
 | SQL Analysis Layer | Complete |
-| Power BI Dashboard | Next |
+| Power BI Dashboard | Complete |
 | Predictive Modelling | Future |
 
 ## What This Project Demonstrates

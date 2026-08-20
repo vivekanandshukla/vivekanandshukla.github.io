@@ -39,12 +39,17 @@ USE CustomerChurnAnalytics;
 GO
 
 --- insert data from file
+-- Update the file path below according to your local environment.
+-- Do not use a user-specific path in the public repository.
+
 BULK INSERT dbo.CustomerChurn
-FROM 'C:\Vivek\?? Learning\Technical Learning\Github Portfolio\projects\data-analytics\customer-churn-prediction\processed_telco_churn.csv'
-WITH (FORMAT = 'CSV',
+FROM 'C:\Path\To\customer-churn-prediction\data\processed_telco_churn.csv'
+WITH (
+    FORMAT = 'CSV',
     FIRSTROW = 2,
     FIELDQUOTE = '"',
-    TABLOCK);
+    TABLOCK
+);
 GO
 
 --- checking all reccords
@@ -114,7 +119,7 @@ ORDER BY
     MIN(tenure);
 
 
-	--- Internet Service × Contract
+	--- Internet Service Ã— Contract
 	SELECT
     InternetService,
     Contract,
@@ -130,7 +135,7 @@ GROUP BY
 ORDER BY
     ChurnRate DESC;
 
-	--- Payment Method × Contract
+	--- Payment Method Ã— Contract
 	SELECT
     PaymentMethod,
     Contract,
@@ -267,7 +272,7 @@ SELECT
                  OR MonthlyCharges >= 70)
             THEN 'Medium Risk'
 
-        ELSE 'Lower Risk'
+        ELSE 'Low Risk'
     END AS RiskLevel
 
 FROM dbo.CustomerChurn

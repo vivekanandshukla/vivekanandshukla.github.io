@@ -6,8 +6,11 @@ from pathlib import Path
 
 # Load processed data
 
-DATA_PATH = Path("../data/processed_telco_churn.csv")
-OUTPUT_PATH = Path("../data/model_ready_telco_churn.csv")
+BASE_DIR = Path(__file__).resolve().parent.parent
+DATA_DIR = BASE_DIR / "data"
+
+DATA_PATH = DATA_DIR / "processed_telco_churn.csv"
+OUTPUT_PATH = DATA_DIR / "model_ready_telco_churn.csv"
 
 df = pd.read_csv(DATA_PATH)
 
@@ -53,10 +56,10 @@ print(df["tenure"].isna().sum())
 print("\nInfinite TotalCharges")
 print(df["TotalCharges"].isin([float("inf"), float("-inf")]).sum())
 
+
 # Average monthly value based on total charges
 
 df["AverageMonthlyValue"] = (df["TotalCharges"] / df["tenure"].replace(0, 1))
-
 
 
 # Validate average monthly value
@@ -69,7 +72,6 @@ print("Infinite values:", df["AverageMonthlyValue"].isin([float("inf"), float("-
 print(df["AverageMonthlyValue"]
     .describe()
     .round(2))
-
 
 
 # Count subscribed services

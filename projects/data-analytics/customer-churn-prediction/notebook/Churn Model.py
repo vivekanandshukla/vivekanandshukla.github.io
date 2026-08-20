@@ -1,18 +1,25 @@
 # Customer Churn Model
 
 import pandas as pd
+import numpy as np
+import joblib
 
+from pathlib import Path
 from sklearn.model_selection import train_test_split
 from sklearn.compose import ColumnTransformer
 from sklearn.pipeline import Pipeline
 from sklearn.preprocessing import OneHotEncoder, StandardScaler
 from sklearn.linear_model import LogisticRegression
-from sklearn.metrics import accuracy_score, precision_score, recall_score, f1_score, roc_auc_score, classification_report
+from sklearn.ensemble import RandomForestClassifier, GradientBoostingClassifier
+from sklearn.metrics import accuracy_score, precision_score, recall_score, f1_score, roc_auc_score, classification_report, confusion_matrix
 
 
 # Load model-ready data
 
-DATA_PATH = "../data/model_ready_telco_churn.csv"
+BASE_DIR = Path(__file__).resolve().parent.parent
+DATA_DIR = BASE_DIR / "data"
+
+DATA_PATH = DATA_DIR / "model_ready_telco_churn.csv"
 
 df = pd.read_csv(DATA_PATH)
 
@@ -95,9 +102,6 @@ print(classification_report(y_test, y_pred, target_names=["Retained", "Churned"]
 
 # Random Forest model
 
-from sklearn.ensemble import RandomForestClassifier
-
-
 random_forest = Pipeline(steps=[("preprocessing", preprocessor),
         ("classifier", RandomForestClassifier(n_estimators=300, random_state=42, class_weight="balanced"))])
 
@@ -133,9 +137,6 @@ print(classification_report(y_test, rf_pred, target_names=["Retained", "Churned"
 
 
 # Gradient Boosting model
-
-from sklearn.ensemble import GradientBoostingClassifier
-
 
 gradient_boosting = Pipeline(
     steps=[("preprocessing", preprocessor),
@@ -174,9 +175,6 @@ print(classification_report(y_test, gb_pred, target_names=["Retained", "Churned"
 
 # Random Forest threshold analysis
 
-import numpy as np
-
-
 threshold_results = []
 
 for threshold in np.arange(0.30, 0.71, 0.05):
@@ -198,6 +196,7 @@ threshold_results = pd.DataFrame(threshold_results)
 
 print("\nRandom Forest Threshold Analysis")
 print(threshold_results.to_string(index=False))
+
 
 # Final Random Forest model with optimized threshold
 
@@ -223,7 +222,6 @@ print(f"F1 Score  : {final_f1:.4f}")
 print(f"ROC-AUC   : {final_roc_auc:.4f}")
 
 
-
 # Final classification report
 
 print("\nFinal Classification Report")
@@ -232,30 +230,16 @@ print(classification_report(y_test, final_rf_pred, target_names=["Retained", "Ch
 
 # Confusion matrix
 
-from sklearn.metrics import confusion_matrix
-
 confusion = confusion_matrix(y_test, final_rf_pred)
 
 print("\nConfusion Matrix")
 print(confusion)
 
-# Save final model
-
-import joblib
-
-MODEL_PATH = "../data/customer_churn_model.pkl"
-
-joblib.dump(random_forest, MODEL_PATH)
-
-print(f"\nFinal model saved to: {MODEL_PATH}")
-
 
 # Save final model and prediction threshold
 
-import joblib
-
-MODEL_PATH = "../data/customer_churn_model.pkl"
-THRESHOLD_PATH = "../data/churn_threshold.pkl"
+MODEL_PATH = DATA_DIR / "customer_churn_model.pkl"
+THRESHOLD_PATH = DATA_DIR / "churn_threshold.pkl"
 
 joblib.dump(random_forest, MODEL_PATH)
 joblib.dump(final_threshold, THRESHOLD_PATH)
@@ -279,7 +263,7 @@ prediction_results["RiskLevel"] = pd.cut(
     labels=["Low Risk", "Medium Risk", "High Risk"]
 )
 
-PREDICTION_PATH = "../data/churn_predictions.csv"
+PREDICTION_PATH = DATA_DIR / "churn_predictions.csv"
 
 prediction_results.to_csv(PREDICTION_PATH, index=False)
 

@@ -1,60 +1,100 @@
+
 # Customer Churn Prediction & Risk Analysis
 
-An end-to-end customer churn analytics and machine learning project using Python, SQL, and Power BI.
+> **End-to-End Customer Churn & Retention Analytics Case Study**
 
-## Project Overview
+An end-to-end customer churn analytics and machine learning project using **Python, SQL, Machine Learning, and Power BI** to identify customers at risk of churn and support data-driven retention decisions.
 
-This project analyzes customer behavior and develops a machine learning model to predict customer churn.
+---
 
-The project follows an end-to-end analytics workflow covering data preprocessing, exploratory data analysis, feature engineering, SQL analysis, machine learning, threshold optimization, customer risk segmentation, and interactive business intelligence reporting.
+## 📌 Project Overview
 
-The objective is to transform raw customer data into actionable insights that can help businesses identify customers at risk of churn and prioritize retention efforts.
+Customer churn directly impacts revenue, customer lifetime value, and long-term business growth.
 
-## Business Problem
+This project analyzes customer behavior and develops a machine learning solution to predict customers who are likely to churn.
+
+The project follows an end-to-end analytics workflow covering:
+
+- Data preprocessing
+- Exploratory data analysis
+- Feature engineering
+- SQL-based business analysis
+- Machine learning model development
+- Model comparison
+- Probability threshold optimization
+- Customer churn prediction
+- Customer risk segmentation
+- Interactive Power BI reporting
+
+The objective is to transform raw customer data into **actionable churn insights** that can help businesses identify high-risk customers and prioritize retention efforts.
+
+---
+
+## 🎯 Business Problem
 
 Customer churn is a major business challenge because losing existing customers can directly impact revenue and customer lifetime value.
 
-The key business question addressed in this project is:
+The key business questions addressed in this project are:
 
-> **Which customers are most likely to churn, what customer characteristics are associated with churn, and how can businesses prioritize customers for retention efforts?**
+> **Which customers are most likely to churn?**
 
-The analysis combines descriptive analytics with predictive modeling to answer both:
+> **What customer characteristics and services are associated with higher churn?**
 
-* **What is happening?**
-* **Which customers are likely to churn?**
+> **How can businesses prioritize customers for retention efforts?**
 
-## Dataset
+The analysis combines **descriptive analytics with predictive modeling** to answer these questions.
+
+---
+
+## 🎯 Key Business Objective
+
+The primary objective is to identify customers who are likely to churn so that businesses can prioritize retention efforts.
+
+The model emphasizes **churn recall** because failing to identify an actual churn customer can result in a missed retention opportunity.
+
+In practical terms:
+
+**Higher Recall → More potential churn customers identified → More opportunities for retention intervention**
+
+---
+
+## 📊 Dataset
 
 The project uses the **Telco Customer Churn** dataset.
 
 The dataset contains information related to:
 
-* Customer demographics
-* Tenure
-* Services subscribed
-* Contract type
-* Internet service
-* Payment method
-* Monthly charges
-* Total charges
-* Billing preferences
-* Customer churn status
+- Customer demographics
+- Tenure
+- Contract type
+- Internet services
+- Payment methods
+- Monthly charges
+- Total charges
+- Customer services
+- Partner and dependent status
+- Senior citizen status
+- Churn status
 
-The dataset contains **7,043 customer records**.
+---
 
-## Tools & Technologies
+## 🛠️ Tools & Technologies
 
-* **Python** — Data preprocessing, EDA, feature engineering, and machine learning
-* **Pandas** — Data manipulation and analysis
-* **NumPy** — Numerical operations
-* **Scikit-learn** — Machine learning and model evaluation
-* **Matplotlib** — Data visualization
-* **SQL Server** — Data analysis and business queries
-* **Power BI** — Interactive dashboard and business reporting
-* **DAX** — Power BI measures and calculations
-* **Jupyter Notebook** — Analysis and development environment
+| Area | Technologies |
+|---|---|
+| Programming | Python |
+| Data Analysis | Pandas, NumPy |
+| Visualization | Matplotlib |
+| Machine Learning | Scikit-learn |
+| Database | SQL Server |
+| Business Intelligence | Power BI |
+| Calculations | DAX |
+| Development | Jupyter Notebook |
+| Version Control | Git & GitHub |
 
-## Project Workflow
+---
+
+# 🔄 Project Workflow
 
 ```text
 Raw Customer Data
@@ -63,104 +103,36 @@ Data Preprocessing
         ↓
 Exploratory Data Analysis
         ↓
-SQL Analysis
-        ↓
 Feature Engineering
         ↓
-Train/Test Split
+SQL Business Analysis
         ↓
-Machine Learning Models
+Machine Learning
         ↓
 Model Comparison
         ↓
 Threshold Optimization
         ↓
-Final Random Forest Model
+Churn Prediction
         ↓
-Customer Churn Prediction
-        ↓
-Risk Segmentation
+Customer Risk Segmentation
         ↓
 Power BI Dashboard
-```
+        ↓
+Business Insights & Retention Strategy
+````
 
-## Data Preparation
+---
 
-The raw customer data was processed to prepare it for analysis and machine learning.
-
-Key preparation activities included:
-
-* Data type validation
-* Missing value handling
-* Data consistency checks
-* Numerical data validation
-* Categorical data preparation
-* Processed dataset generation
-* Model-ready dataset preparation
-
-The processed datasets are stored in the `data` directory.
-
-## Exploratory Data Analysis
-
-Exploratory analysis was performed to understand customer behavior and identify patterns associated with churn.
-
-The analysis focused on:
-
-* Customer churn distribution
-* Contract type
-* Tenure
-* Monthly charges
-* Internet service
-* Payment method
-* Customer services
-* Customer profile characteristics
-
-The findings were used to guide feature engineering and machine learning analysis.
-
-## Feature Engineering
-
-Additional features were created to improve customer-level analysis and model interpretability.
-
-Engineered features include:
-
-* **TenureGroup**
-* **MonthlyChargeGroup**
-* **AverageMonthlyValue**
-* **ServiceCount**
-* **HasSecurityOrSupport**
-* **IsLongTermContract**
-* **UsesPaperlessBilling**
-
-These features help transform raw customer attributes into more meaningful analytical variables.
-
-## SQL Analysis
-
-SQL Server was used to perform customer churn analysis and generate business insights.
-
-The SQL analysis includes customer-level and segment-level churn queries covering areas such as:
-
-* Overall churn
-* Retained vs churned customers
-* Churn by contract
-* Churn by tenure
-* Churn by payment method
-* Churn by internet service
-* Customer segmentation
-* Churn-related business metrics
-
-The SQL queries are available in:
-
-`sql/churn-analysis.sql`
-
-## Machine Learning
+# 🤖 Machine Learning
 
 Three classification models were evaluated:
 
-1. Logistic Regression
-2. Random Forest
-3. Gradient Boosting
+1. **Logistic Regression**
+2. **Random Forest**
+3. **Gradient Boosting**
 
-The models were evaluated using classification metrics including:
+The models were evaluated using:
 
 * Accuracy
 * Precision
@@ -168,123 +140,130 @@ The models were evaluated using classification metrics including:
 * F1 Score
 * ROC-AUC
 
-## Model Comparison
+---
 
-The initial model comparison showed that different models provide different trade-offs between accuracy, precision, recall, and F1 score.
-
-For a churn prediction problem, identifying actual churners is particularly important because failing to identify a customer who is likely to churn can result in a missed retention opportunity.
-
-Therefore, **churn recall** was given significant importance during model selection and threshold optimization.
-
-## Final Model
+## 🏆 Final Model
 
 **Random Forest** was selected as the final model.
 
-The default classification threshold of **0.50** was optimized to **0.40** to improve churn detection while maintaining a reasonable balance between precision and recall.
+The classification threshold was optimized from the default **0.50 to 0.40** to improve churn detection.
 
 ### Final Model Performance
 
-| Metric    | Score |
-| --------- | ----: |
-| Accuracy  |   74% |
-| Precision |   51% |
-| Recall    |   75% |
-| F1 Score  |   61% |
-| ROC-AUC   |   82% |
+| Metric    |   Score |
+| --------- | ------: |
+| Accuracy  | **74%** |
+| Precision | **51%** |
+| Recall    | **75%** |
+| F1 Score  | **61%** |
+| ROC-AUC   | **82%** |
 
-## Threshold Optimization
+### Selected Threshold
 
-Threshold analysis was performed to evaluate the trade-off between precision, recall, and F1 score.
-
-The selected threshold was **0.40**.
+**0.40**
 
 At this threshold:
 
-* Recall: **75.13%**
-* F1 Score: **60.69%**
-* ROC-AUC: **81.96%**
+* **Recall:** 75.13%
+* **F1 Score:** 60.69%
+* **ROC-AUC:** 81.96%
 
-## Churn Prediction & Risk Segmentation
+The selected threshold prioritizes identifying a larger proportion of actual churn customers while maintaining a reasonable balance between precision and recall.
 
-The final Random Forest model was used to generate churn probabilities for the test dataset.
+---
 
-The prediction output includes:
+# 📈 Threshold Optimization
 
-* Actual churn status
-* Churn probability
-* Predicted churn status
-* Customer risk level
+Instead of automatically using the standard classification threshold of `0.50`, multiple thresholds were evaluated.
 
-Customers were segmented into three risk categories:
+| Threshold |  Precision |     Recall |   F1 Score |
+| --------: | ---------: | ---------: | ---------: |
+|      0.30 |     46.24% |     83.96% |     59.64% |
+|      0.35 |     48.37% |     79.41% |     60.12% |
+|  **0.40** | **50.91%** | **75.13%** | **60.69%** |
+|      0.45 |     52.80% |     70.59% |     60.41% |
+|      0.50 |     54.09% |     63.64% |     58.48% |
+|      0.55 |     55.99% |     57.49% |     56.73% |
+|      0.60 |     58.33% |     50.53% |     54.15% |
+|      0.65 |     61.89% |     47.33% |     53.64% |
+|      0.70 |     64.50% |     39.84% |     49.26% |
 
-* **Low Risk**
-* **Medium Risk**
-* **High Risk**
+### Why 0.40?
 
-The prediction dataset contains **1,409 test customers**.
+The threshold of **0.40** provides the highest F1 Score among the evaluated thresholds while maintaining substantially higher recall than the default 0.50 threshold.
 
-## Model Evaluation
+This makes it suitable for a retention-oriented use case where missing a potential churn customer can be costly.
 
-The final model produced the following confusion matrix:
+---
 
-| Actual \ Predicted |  No | Yes |
-| ------------------ | --: | --: |
-| No                 | 764 | 271 |
-| Yes                |  93 | 281 |
+# 🔍 Model Comparison
 
-This means:
+| Model               | Accuracy | Precision | Recall | F1 Score |
+| ------------------- | -------: | --------: | -----: | -------: |
+| Gradient Boosting   |      80% |       66% |    51% |      58% |
+| Logistic Regression |      80% |       66% |    52% |      58% |
+| Random Forest       |      76% |       54% |    63% |      59% |
 
-* **True Negatives:** 764
-* **False Positives:** 271
-* **False Negatives:** 93
-* **True Positives:** 281
+> The final production-oriented configuration uses **Random Forest with a 0.40 classification threshold**, resulting in the final performance metrics reported above.
 
-The model correctly identified **281 of 374 actual churn customers**, resulting in approximately **75.13% churn recall**.
+---
 
-## Power BI Dashboard
+# 📊 Power BI Dashboard
 
-The Power BI dashboard is organized into three analytical pages covering business insights, churn risk, and machine learning model performance.
+The Power BI dashboard consists of three analytical pages designed to connect customer behavior, churn risk, and machine learning performance.
 
-### 1. Executive Overview
+---
 
-**Dashboard Title:** Customer Churn Prediction & Risk Analysis
+## 1. Executive Overview
 
-Provides a high-level view of:
+Provides a high-level business view of:
 
 * Actual churn
 * Predicted churn
-* Prediction customers
 * High-risk customers
-* Churn rate analysis
-* Actual vs predicted churn
-* Confusion matrix
+* Churn rates
+* Contract behavior
+* Internet service behavior
+* Payment method behavior
+* Tenure groups
 * Customer risk distribution
+* Prediction confusion matrix
+
+### Dashboard Preview
 
 ![Executive Overview](powerbi/screenshots/executive-overview.png)
 
-### 2. Customer Churn Analysis
+---
 
-**Dashboard Title:** Customer Churn Drivers & Business Insights
+## 2. Customer Churn Analysis
 
-Provides deeper analysis of churn drivers and customer characteristics across:
+This page focuses on identifying the major customer characteristics associated with churn.
 
-* Contract
+It analyzes:
+
+* Contract type
 * Monthly charges
 * Service count
 * Customer age group
 * Partner status
 * Dependents
+* Internet service
+* Payment method
+* Tenure
+
+### Dashboard Preview
 
 ![Customer Churn Analysis](powerbi/screenshots/customer-churn-analysis.png)
 
-### 3. Model Performance
+---
 
-**Dashboard Title:** Churn Prediction Model Performance
+## 3. Model Performance
 
-Provides:
+The model performance page provides a consolidated view of the machine learning solution.
 
-* Model comparison
-* Final Random Forest performance
+It includes:
+
+* Model performance comparison
 * Accuracy
 * Precision
 * Recall
@@ -293,52 +272,76 @@ Provides:
 * Threshold optimization
 * Final confusion matrix
 
+### Dashboard Preview
+
 ![Model Performance](powerbi/screenshots/model-performance.png)
 
-## Key Business Objective
+---
 
-The primary objective is to identify customers who are likely to churn so that businesses can prioritize retention efforts.
+# 💡 Key Business Insights
 
-The model emphasizes churn recall because failing to identify an actual churn customer can result in a missed retention opportunity.
+The analysis demonstrates how customer-level behavioral and service characteristics can be used to identify churn risk.
 
-## Key Business Insights
+Key analytical areas include:
 
-The analysis enables businesses to examine churn patterns across:
+* Contract type and its relationship with churn
+* Monthly charge levels and churn behavior
+* Customer tenure and churn probability
+* Internet service type and churn
+* Payment method and customer retention
+* Service engagement and churn risk
+* Customer demographic characteristics
+* Risk-based customer segmentation
 
-* Contract types
-* Monthly charge groups
-* Customer tenure
-* Service adoption
-* Internet service
-* Payment methods
-* Customer profile characteristics
+These insights can support targeted retention strategies instead of applying the same retention approach to every customer.
 
-The predictive component additionally enables customers to be prioritized according to their estimated churn risk.
+---
 
-## Key Outcome
+# 🚨 Customer Risk Segmentation
 
-The project combines data analytics, SQL, machine learning, and business intelligence into a single end-to-end customer churn solution.
+The prediction output is further converted into customer risk levels to make the machine learning results more actionable for business teams.
 
-The final solution moves from raw customer data to:
+Customers can be prioritized based on predicted churn probability and risk classification.
+
+A typical retention workflow can therefore be:
 
 ```text
-Data
-  ↓
-Analysis
-  ↓
-Business Insights
-  ↓
-Prediction
-  ↓
-Risk Segmentation
-  ↓
+Predicted Churn Probability
+          ↓
+    Risk Segmentation
+          ↓
+High / Medium / Low Risk
+          ↓
 Retention Prioritization
+          ↓
+Targeted Customer Intervention
 ```
 
-## Project Structure
+This bridges the gap between **machine learning predictions and business decision-making**.
+
+---
+
+# 🧮 SQL Analysis
+
+SQL was used to perform customer-level and business-oriented analysis, including churn patterns across different customer attributes.
+
+SQL analysis is available in:
+
+```text
+sql/churn-analysis.sql
+```
+
+The SQL component demonstrates the use of customer-level aggregation, filtering, grouping, churn analysis, and business-oriented queries.
+
+---
+
+# 📁 Project Structure
 
 ```text
 customer-churn-prediction/
+│
+├── README.md
+├── .gitignore
 │
 ├── data/
 │   ├── Telco-Customer-Churn.csv
@@ -350,40 +353,49 @@ customer-churn-prediction/
 │
 ├── notebook/
 │   ├── Data Preprocessing.py
-│   ├── Churn Analysis.py
 │   ├── Feature Engineering.py
+│   ├── Churn Analysis.py
 │   └── Churn Model.py
 │
 ├── sql/
 │   └── churn-analysis.sql
 │
-├── powerbi/
-│   ├── customer-churn-dashboard.pbix
-│   └── screenshots/
-│       ├── executive-overview.png
-│       ├── customer-churn-analysis.png
-│       └── model-performance.png
-│
-└── README.md
+└── powerbi/
+    ├── customer-churn-dashboard.pbix
+    └── screenshots/
+        ├── executive-overview.png
+        ├── customer-churn-analysis.png
+        └── model-performance.png
 ```
 
-## Project Deliverables
+---
 
-The project includes:
+# 📌 Key Outcome
 
-* Processed customer datasets
-* Feature-engineered model-ready dataset
-* Python data analysis and machine learning scripts
-* SQL analysis queries
-* Trained Random Forest model
-* Churn prediction output
-* Optimized prediction threshold
-* Interactive Power BI dashboard
-* Dashboard screenshots
-* Project documentation
+The project demonstrates a complete **end-to-end customer churn analytics solution**, connecting:
 
-## Conclusion
+**Data → Analysis → SQL → Machine Learning → Risk Prediction → Business Intelligence**
 
-This project demonstrates an end-to-end approach to customer churn analysis by combining data preparation, exploratory analysis, SQL, feature engineering, machine learning, predictive risk segmentation, and Power BI reporting.
+The final solution combines predictive modeling with interactive Power BI reporting to help businesses identify customers at risk of churn and prioritize retention efforts.
 
-The final solution provides both **business-level churn insights** and a **predictive framework for identifying customers who may require proactive retention efforts**.
+---
+
+## 🔗 Project Components
+
+| Component   | Purpose                                                      |
+| ----------- | ------------------------------------------------------------ |
+| `data/`     | Raw, processed and model-ready datasets                      |
+| `notebook/` | Data preparation, analysis, feature engineering and modeling |
+| `sql/`      | SQL-based churn and business analysis                        |
+| `powerbi/`  | Interactive Power BI dashboard and screenshots               |
+| `README.md` | Project documentation                                        |
+
+---
+
+## 👤 Author
+
+**Vivekanand Shukla**
+
+Data Analytics | SQL | Python | Machine Learning | Power BI
+
+````

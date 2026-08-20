@@ -10,6 +10,8 @@ Python · SQL · Power BI · Excel
 
 </div>
 
+---
+
 ## Overview
 
 This case study analyzes retail transactions from the Sample Superstore dataset to understand **sales performance, profitability, discount behaviour, product economics, and regional performance**.
@@ -19,6 +21,8 @@ The central business question is:
 > **Where is the business generating revenue, and where is that revenue failing to translate into profit?**
 
 The analysis progresses from data validation and exploratory analysis to profitability diagnosis and business recommendations.
+
+---
 
 ## Executive Snapshot
 
@@ -33,9 +37,11 @@ The analysis progresses from data validation and exploratory analysis to profita
 | Quantity Sold | **37,873** |
 | Average Order Value | **$458.61** |
 
+---
+
 ## What the Analysis Found
 
-### Furniture is the primary category-level profitability concern
+### 1. Furniture is the primary category-level profitability concern
 
 | Category | Sales | Profit | Margin |
 |---|---:|---:|---:|
@@ -56,7 +62,9 @@ The problem becomes clearer at sub-category level:
 
 **Tables is the largest sub-category profitability concern.**
 
-### Discounting is strongly associated with weaker profitability
+---
+
+### 2. Discounting is strongly associated with weaker profitability
 
 | Discount Band | Profit Margin | Loss-making Records |
 |---|---:|---:|
@@ -72,7 +80,9 @@ The Pearson correlation between **Discount and Profit is approximately -0.220**.
 
 > This is a descriptive association, not proof of causation. Product mix, category, region, and customer composition may also influence profitability.
 
-### Regional performance is uneven
+---
+
+### 3. Regional performance is uneven
 
 | Region | Sales | Profit | Margin |
 |---|---:|---:|---:|
@@ -85,7 +95,9 @@ The weakest Region × Category combination is **Central × Furniture**:
 
 **~$163.80K Sales → ~-$2.87K Profit → ~-1.75% Margin**
 
-### Revenue growth should be evaluated with profitability
+---
+
+### 4. Revenue growth should be evaluated with profitability
 
 Sales increased from approximately **$484K in 2014** to **$733K in 2017**.
 
@@ -94,6 +106,8 @@ However, sales and profit did not move proportionally in every year.
 In **2015**, sales decreased by approximately **2.83%**, while profit increased by approximately **24.37%**.
 
 This demonstrates why revenue growth alone is not sufficient to evaluate business performance.
+
+---
 
 ## Business Questions
 
@@ -105,6 +119,8 @@ The analysis was designed around six practical questions:
 4. How does discounting relate to profitability?
 5. Which regions and customer segments perform best?
 6. Where are profitability problems concentrated?
+
+---
 
 ## Analytical Workflow
 
@@ -128,53 +144,66 @@ Regional & Customer Analysis
 Business Diagnosis
    ↓
 Recommendations
-```
+````
+
+---
 
 ## Data Quality
 
-| Check | Result |
-|---|---:|
-| Records | 9,994 |
-| Columns | 21 |
-| Duplicate Rows | **0** |
-| Missing Values | **0** |
-| Invalid Dates | **0** |
-| Ship Before Order | **0** |
-| Negative / Zero Sales | **0** |
-| Negative / Zero Quantity | **0** |
-| Negative-profit Records | **1,871** |
+| Check                    |    Result |
+| ------------------------ | --------: |
+| Records                  |     9,994 |
+| Columns                  |        21 |
+| Duplicate Rows           |     **0** |
+| Missing Values           |     **0** |
+| Invalid Dates            |     **0** |
+| Ship Before Order        |     **0** |
+| Negative / Zero Sales    |     **0** |
+| Negative / Zero Quantity |     **0** |
+| Negative-profit Records  | **1,871** |
 
 Negative-profit records were intentionally retained because they are necessary for understanding the actual profitability picture.
 
+---
+
 ## Business Recommendations
 
-**01 — Discount Governance**  
+### 01 — Discount Governance
+
 Review high-discount transactions and evaluate category-specific discount thresholds.
 
-**02 — Furniture Profitability**  
+### 02 — Furniture Profitability
+
 Investigate Tables and Bookcases at product, discount, and regional level before making pricing or assortment decisions.
 
-**03 — Regional Strategy**  
+### 03 — Regional Strategy
+
 Investigate Central × Furniture separately rather than treating the entire Central region as underperforming.
 
-**04 — Executive KPI Reporting**  
+### 04 — Executive KPI Reporting
+
 Track **Sales, Profit, and Profit Margin together**.
 
-**05 — Product Concentration**  
+### 05 — Product Concentration
+
 Monitor dependence on high-profit products and identify opportunities to broaden the profit base.
+
+---
 
 ## Technical Stack
 
-| Area | Tools |
-|---|---|
-| Programming | Python |
-| Data Analysis | Pandas, NumPy |
-| Querying | SQL |
-| Business Intelligence | Power BI, DAX |
-| Spreadsheet Analysis | Microsoft Excel |
-| Methods | Data Cleaning, EDA, KPI Analysis, Time-Series Analysis, Profitability Analysis |
+| Area                  | Tools                                                                          |
+| --------------------- | ------------------------------------------------------------------------------ |
+| Programming           | Python                                                                         |
+| Data Analysis         | Pandas, NumPy                                                                  |
+| Querying              | SQL                                                                            |
+| Business Intelligence | Power BI, DAX                                                                  |
+| Spreadsheet Analysis  | Microsoft Excel                                                                |
+| Methods               | Data Cleaning, EDA, KPI Analysis, Time-Series Analysis, Profitability Analysis |
 
-## Power BI Dashboard
+---
+
+# Power BI Dashboard
 
 The project includes an interactive Power BI dashboard designed to monitor overall business performance and investigate the key drivers of profitability.
 
@@ -182,13 +211,13 @@ The project includes an interactive Power BI dashboard designed to monitor overa
 
 The Executive Overview provides a high-level view of business performance across:
 
-- Sales and profit
-- Profit margin
-- Order and customer volume
-- Yearly sales and profit trends
-- Category profitability
-- Regional profitability
-- Customer segment performance
+* Sales and profit
+* Profit margin
+* Order and customer volume
+* Yearly sales and profit trends
+* Category profitability
+* Regional profitability
+* Customer segment performance
 
 ![Executive Overview](powerbi/executive-overview.png)
 
@@ -200,19 +229,18 @@ The Profitability Deep Dive focuses on identifying profit drivers, loss-making a
 
 ### Dashboard Capabilities
 
-- Interactive filtering by year, region, category, and customer segment
-- Executive KPI monitoring
-- Sales and profit trend analysis
-- Category and regional profitability analysis
-- Sub-category profitability analysis
-- Discount versus profit-margin analysis
-- Region × category profitability diagnostics
-- Top and bottom product profitability analysis
+* Interactive filtering by year, region, category, and customer segment
+* Executive KPI monitoring
+* Sales and profit trend analysis
+* Category and regional profitability analysis
+* Sub-category profitability analysis
+* Discount versus profit-margin analysis
+* Region × category profitability diagnostics
+* Top and bottom product profitability analysis
 
-## Repository Structure
+---
 
-```text
-## Repository Structure
+# Repository Structure
 
 ```text
 retail-sales-profitability/
@@ -220,6 +248,7 @@ retail-sales-profitability/
 ├── README.md
 │
 ├── data/
+│   ├── superstore_raw.csv
 │   └── superstore_cleaned.csv
 │
 ├── scripts/
@@ -235,23 +264,27 @@ retail-sales-profitability/
     └── profitability-deep-dive.png
 ```
 
+---
+
 ## Project Status
 
-| Component | Status |
-|---|:---:|
-| Data Quality Audit | Complete |
-| Data Cleaning | Complete |
-| KPI Analysis | Complete |
-| Time Trend Analysis | Complete |
+| Component                        |  Status  |
+| -------------------------------- | :------: |
+| Data Quality Audit               | Complete |
+| Data Cleaning                    | Complete |
+| KPI Analysis                     | Complete |
+| Time Trend Analysis              | Complete |
 | Category & Sub-category Analysis | Complete |
-| Product Profitability | Complete |
-| Discount Analysis | Complete |
-| Regional Analysis | Complete |
-| Customer Analysis | Complete |
-| Business Diagnosis | Complete |
-| SQL Analysis Layer | Complete |
-| Power BI Dashboard | Complete |
-| Predictive Modelling | Future |
+| Product Profitability            | Complete |
+| Discount Analysis                | Complete |
+| Regional Analysis                | Complete |
+| Customer Analysis                | Complete |
+| Business Diagnosis               | Complete |
+| SQL Analysis Layer               | Complete |
+| Power BI Dashboard               | Complete |
+| Predictive Modelling             |  Future  |
+
+---
 
 ## What This Project Demonstrates
 
@@ -261,20 +294,23 @@ This case study demonstrates the complete analytical chain:
 
 The emphasis is on understanding **what changed, where profitability is being created or lost, and which business areas deserve further investigation**.
 
+---
+
 ## Future Enhancements
 
-- Interactive Power BI executive dashboard
-- Advanced SQL analysis and window functions
-- Statistical testing of discount-profit relationships
-- Customer segmentation
-- Predictive profitability modelling
-- Automated reporting
+* Advanced SQL analysis and window functions
+* Statistical testing of discount-profit relationships
+* Customer segmentation
+* Predictive profitability modelling
+* Automated reporting
+
+---
 
 ## Project Context
 
-**Type:** Independent Portfolio Project  
-**Domain:** Retail Analytics  
-**Dataset:** Sample Superstore  
+**Type:** Independent Portfolio Project
+**Domain:** Retail Analytics
+**Dataset:** Sample Superstore
 **Analysis Period:** 2014–2017
 
 This is an independent portfolio case study created to demonstrate practical data analytics skills. The dataset is a public/sample dataset and does not represent employer or client work.

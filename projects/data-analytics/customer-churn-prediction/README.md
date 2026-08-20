@@ -120,7 +120,7 @@ Customer Risk Segmentation
 Power BI Dashboard
         ↓
 Business Insights & Retention Strategy
-````
+```
 
 ---
 
@@ -229,7 +229,6 @@ Provides a high-level business view of:
 * Customer risk distribution
 * Prediction confusion matrix
 
-### Dashboard Preview
 
 ![Executive Overview](powerbi/screenshots/executive-overview.png)
 
@@ -251,7 +250,6 @@ It analyzes:
 * Payment method
 * Tenure
 
-### Dashboard Preview
 
 ![Customer Churn Analysis](powerbi/screenshots/customer-churn-analysis.png)
 
@@ -272,7 +270,6 @@ It includes:
 * Threshold optimization
 * Final confusion matrix
 
-### Dashboard Preview
 
 ![Model Performance](powerbi/screenshots/model-performance.png)
 
@@ -280,30 +277,68 @@ It includes:
 
 # 💡 Key Business Insights
 
-The analysis demonstrates how customer-level behavioral and service characteristics can be used to identify churn risk.
+The Power BI analysis identifies several customer segments and behavioral patterns associated with higher churn risk.
 
-Key analytical areas include:
+### 1. Contract Type
 
-* Contract type and its relationship with churn
-* Monthly charge levels and churn behavior
-* Customer tenure and churn probability
-* Internet service type and churn
-* Payment method and customer retention
-* Service engagement and churn risk
-* Customer demographic characteristics
-* Risk-based customer segmentation
+- **Month-to-month customers show the highest churn rate at approximately 42%**.
+- One-year and two-year contract customers have substantially lower churn rates.
+- This indicates that customers without long-term contractual commitment represent an important retention segment.
 
-These insights can support targeted retention strategies instead of applying the same retention approach to every customer.
+### 2. Customer Tenure
 
+- Customers in the **0–6 month tenure group have the highest churn rate at approximately 55%**.
+- Churn generally declines as customer tenure increases.
+- Early-stage customers should therefore receive stronger onboarding and retention attention.
+
+### 3. Monthly Charges
+
+- Customers paying **$60–$89 per month show the highest churn rate at approximately 34%**.
+- The `$90+` segment also shows elevated churn at approximately 31%.
+- Higher monthly billing levels therefore represent an important area for customer-value and retention analysis.
+
+### 4. Internet Service
+
+- **Fiber optic customers show the highest churn rate at approximately 42%** among the analyzed internet service categories.
+- DSL customers show a lower churn rate, while customers without internet service show the lowest rate.
+- Fiber optic customers may require additional investigation into service experience, pricing, and perceived value.
+
+### 5. Payment Method
+
+- **Electronic check customers have the highest churn rate at approximately 44%**.
+- Bank transfer, mailed check, and credit card customers show substantially lower churn rates.
+- Payment behavior can therefore be considered as one of the variables for retention targeting.
+
+### 6. Customer Risk Segmentation
+
+The predictive model converts churn probability into actionable customer risk segments:
+
+| Risk Level | Customer Share |
+|---|---:|
+| Low Risk | 60.89% |
+| Medium Risk | 22.78% |
+| High Risk | 16.32% |
+
+This enables businesses to prioritize retention resources toward **high-risk and medium-risk customers** rather than treating the entire customer base uniformly.
+
+### Business Implication
+
+The analysis suggests that retention strategies should particularly focus on:
+
+- New customers in their first six months
+- Month-to-month contract customers
+- Customers with higher monthly charges
+- Fiber optic customers
+- Electronic check customers
+- Customers identified as high or medium churn risk by the predictive model
+
+These findings can be used to design targeted interventions such as improved onboarding, contract conversion campaigns, service-quality reviews, pricing/value interventions, and proactive retention offers.
+
+> **Note:** These patterns represent associations observed in the dataset and should not be interpreted as proof that any individual factor directly causes churn.
 ---
+### Retention Workflow
 
-# 🚨 Customer Risk Segmentation
-
-The prediction output is further converted into customer risk levels to make the machine learning results more actionable for business teams.
-
-Customers can be prioritized based on predicted churn probability and risk classification.
-
-A typical retention workflow can therefore be:
+The prediction output can be converted into an actionable retention workflow:
 
 ```text
 Predicted Churn Probability
@@ -398,4 +433,4 @@ The final solution combines predictive modeling with interactive Power BI report
 
 Data Analytics | SQL | Python | Machine Learning | Power BI
 
-````
+```

@@ -204,7 +204,7 @@ This makes it suitable for a retention-oriented use case where missing a potenti
 | Logistic Regression |      80% |       66% |    52% |      58% |
 | Random Forest       |      76% |       54% |    63% |      59% |
 
-> The final production-oriented configuration uses **Random Forest with a 0.40 classification threshold**, resulting in the final performance metrics reported above.
+> The model comparison above reflects the evaluated models before the final threshold optimization. The final production-oriented configuration uses **Random Forest with a 0.40 classification threshold**, resulting in the final performance metrics reported above.
 
 ---
 
@@ -311,7 +311,7 @@ The Power BI analysis identifies several customer segments and behavioral patter
 
 ### 6. Customer Risk Segmentation
 
-The predictive model converts churn probability into actionable customer risk segments:
+The prediction output is further used to support actionable customer risk segmentation:
 
 | Risk Level | Customer Share |
 |---|---:|
@@ -363,7 +363,7 @@ SQL was used to perform customer-level and business-oriented analysis, including
 SQL analysis is available in:
 
 ```text
-sql/churn-analysis.sql
+sql/churn_analysis.sql
 ```
 
 The SQL component demonstrates the use of customer-level aggregation, filtering, grouping, churn analysis, and business-oriented queries.

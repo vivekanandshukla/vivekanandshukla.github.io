@@ -387,10 +387,10 @@ customer-churn-prediction/
 │   └── churn_threshold.pkl
 │
 ├── notebook/
-│   ├── Data Preprocessing.py
-│   ├── Feature Engineering.py
-│   ├── Churn Analysis.py
-│   └── Churn Model.py
+│   ├── data_preprocessing.py
+│   ├── feature_engineering.py
+│   ├── exploratory_data_analysis.py
+│   └── churn_model.py
 │
 ├── sql/
 │   └── churn-analysis.sql

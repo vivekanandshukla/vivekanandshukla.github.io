@@ -220,17 +220,17 @@ retail-sales-profitability/
 ├── README.md
 │
 ├── data/
-│   └── cleaned_superstore.csv
+│   └── superstore_cleaned.csv
 │
-├── notebooks/
-│   ├── 01_audit_and_kpis.py
-│   └── 02_eda.py
+├── scripts/
+│   ├── data_audit.py
+│   └── exploratory_data_analysis.py
 │
 ├── sql/
 │   └── business_questions.sql
 │
 └── powerbi/
-    ├── Retail_Sales_Profitability_Analytics.pbix
+    ├── retail_sales_profitability.pbix
     ├── executive-overview.png
     └── profitability-deep-dive.png
 ```
